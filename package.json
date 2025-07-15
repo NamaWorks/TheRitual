@@ -1,0 +1,50 @@
+{
+  "name": "bp_henp",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "frontend:development": "webpack serve --mode=development",
+    "frontend:production": "webpack --mode=production",
+    "backend:build": "node src/server.js",
+    "backend:development": "nodemon src/server.js",
+    "build": "npm run frontend:production",
+    "start": "npm run build && npm run backend:build",
+    "start-concurrently": "npm run --concurrently build && npm run backend:build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NamaWorks/BP_HENP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NamaWorks/BP_HENP/issues"
+  },
+  "homepage": "https://github.com/NamaWorks/BP_HENP#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "babel-loader": "^10.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^9.2.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.100.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pug": "^3.0.2"
+  }
+}

@@ -1,0 +1,42 @@
+//- Main layout template for the website using Pug
+//- Declares a block for variables at the top (for passing data into the template)
+block variables
+
+//- Sets up the HTML document structure
+doctype html
+html(lang="en")
+  head
+    //- Meta tags for charset and viewport
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    //- Sets the base URL for relative links, we should include this to avoid re renderings
+    base(href="/")
+
+    //- Sets the page title
+    title=home[0].title.rendered || "testeando ando"
+
+    //- SEO and description meta tag
+    meta(name="description" content="New Page Description")
+    
+    //- Favicon and manifest links for browser and device icons
+    link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png")
+    //- link(rel="manifest" href="/site.webmanifest")
+    link(rel="mask-icon" href="/safari-pinned-tab.svg" color="#000")
+
+
+    //- Links to the main CSS stylesheet
+    link(href="/css/styles.css" rel="stylesheet")
+  
+  body
+    include ./partials/navbar.pug
+
+    .content#content(data-template=template)
+      block content
+
+    script(src='main.js' defer) 
+    //- we use the main.js as that's the file we get from the build (we can check it in the public folder)
+    
+//- End of base.pug
