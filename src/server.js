@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { getApiData } = require('./utils/api');
+const { getApiData } = require('./api/api');
 
 require('dotenv').config()
 
@@ -16,16 +16,18 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 // Home route renders the Pug template
 app.get('/', async (req, res) => {
+  const apiData = await getApiData('')
+  console.log(apiData)
 
   const home = await getApiData('pages');
-  console.log(home)
+  // console.log(home)
 
   res.render('pages/home', {
     home
   })
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', (req, res) => { // if we want ot create a SPA
   res.render('pages/about')
 });
 
