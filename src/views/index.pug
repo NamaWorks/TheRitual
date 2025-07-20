@@ -14,7 +14,7 @@ html(lang="en")
     base(href="/")
 
     //- Sets the page title
-    title=home[0].title.rendered || "testeando ando"
+    title='HENP'
 
     //- SEO and description meta tag
     meta(name="description" content="New Page Description")
@@ -33,7 +33,7 @@ html(lang="en")
   body
     include ./partials/navbar.pug
 
-    .content#content(data-template=template)
+    main.content#content(data-template=template)
       block content
 
     script(src='main.js' defer) 
