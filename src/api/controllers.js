@@ -21,7 +21,7 @@ const getHome = async (req, res, next) => {
     }
 
   } catch (err) {
-    console.log('error')
+    console.log('error: ', err)
     // return res.status(400).json(`error at getHome: ${err}`)
   }
 };

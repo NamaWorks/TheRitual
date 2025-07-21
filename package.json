@@ -4,14 +4,14 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "frontend:development": "webpack serve --mode=development",
+    "frontend:dev": "webpack serve --mode=development",
     "frontend:production": "webpack --mode=production",
     "backend:build": "node src/server.js",
-    "backend:development": "nodemon src/server.js",
+    "backend:dev": "nodemon src/server.js",
     "build": "npm run frontend:production",
     "start": "npm run build && npm run backend:build",
-    "start-concurrently": "npm run --concurrently build && npm run backend:build",
-    "dev": "npm run --concurrently backend:development && frontend:development"
+    "watch": "webpack --watch --mode=development",
+    "dev": "concurrently 'npm run backend:dev' 'npm run watch'"
   },
   "repository": {
     "type": "git",

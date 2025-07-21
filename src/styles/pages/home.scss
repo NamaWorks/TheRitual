@@ -1,0 +1,5 @@
+@forward '../shared/titles.scss';
+
+.home__pretitle {
+  @extend %pretitle-100;
+}

@@ -1,9 +1,9 @@
-@import './base/fonts.scss';
-@import './base/reset.scss';
 
-@import './shared/links.scss';
-@import './shared/titles.scss';
+@forward './base/fonts.scss';
+@forward './base/reset.scss';
 
-@import './pages/about.scss';
-@import './pages/home.scss';
+@forward './shared/titles.scss';
 
+@forward './pages/home.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
