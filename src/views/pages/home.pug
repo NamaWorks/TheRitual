@@ -1,18 +1,27 @@
 extends ../index.pug
 
 block variables
-  - var template = 'home'
+  - let template = 'home'
+  - const images = Object.values(home.acf.gallery) // we import the images this way, as in the API response we get an object, not an array, with an array we'd use an each
 
 block content
-  h2.home__pretitle=home.acf.pre_title
-  h1.home__title=home.acf.title_01 || 'test'
+  section.home__hero
+    h2.home__hero__pretitle=home.acf.pre_title
+    h1.home__hero__title!=home.acf.title_01 || 'test'
 
-  .home__gallery__container
-    each image in home.acf.gallery
-      .home__gallery__image__content
-        img.home__gallery__image(src=image.url data-image-id=image.id alt!=image.alt)
+  section.home__galleries
+    .home__gallery__container.home__gallery__container__top
+      each image, index in images
+        if +index < 5
+          .home__gallery__image__content
+            img.home__gallery__image(src=image.url data-image-id=image.id alt=image.alt)
+    
+    .home__gallery__container.home__gallery__container__bottom
+      each image, index in images
+        if +index >= 5
+          .home__gallery__image__content
+            img.home__gallery__image(src=image.url data-image-id=image.id alt=image.alt)
+        
   footer.home__footer
     h2.home__footer__title!=home.acf.footer.footer_title
     p.home__footer__copy!=home.acf.footer.footer_copy
-    //- .home__footer__image__container
-    //-     img.home__footer__image(src=home.acf.gallery.gallery_7.url data-image-id=home.acf.gallery.gallery_7.id alt!=home.acf.gallery.gallery_7.alt)
