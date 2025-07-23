@@ -22,5 +22,9 @@ export default class Component {
     });
   })
   this.observer.observe(this.element)
-};
+  };
+
+  updateTemplate () {
+    
+  };
 }

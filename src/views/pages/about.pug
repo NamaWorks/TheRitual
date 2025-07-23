@@ -1,15 +1,8 @@
-//- Main layout template for the website using Pug
-//- Declares a block for variables at the top (for passing data into the template)
+extends ../index.pug
 block variables
+  - let template = 'about'
 
-//- Sets up the HTML document structure
-doctype html
-html(lang="en")
-
-  body
-
-    script(src='main.js' defer) 
-    //- we use the main.js as that's the file we get from the build (we can check it in the public folder)
+block content
     h1 About
 
     

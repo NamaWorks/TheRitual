@@ -50,21 +50,21 @@ const getHome = async (req, res, next) => {
 
 const getAbout = async (req, res, next) => {
   try {
-    const cacheKey = 'pages.home';
+    const cacheKey = 'pages.about';
     const cached = getFromCache(cacheKey);
     if (cached) {
       // console.log('value cached')
       return cached
     } else {
       // console.log('value not cached')
-      const home = getApiData('pages/')
+      const about = getApiData('pages/')
         .then(res => res)
         .catch(err => console.log(err))
-        .then(res => res.find(item => item.slug === 'home'))
+        .then(res => res.find(item => item.slug === 'about'))
         .catch(err => console.log(err))
       
       setCache(cacheKey, home, 60000)
-      return home
+      return about
     }
 
   } catch (err) {
@@ -75,4 +75,4 @@ const getAbout = async (req, res, next) => {
 
 
 
-module.exports = { getHome, getNav }
+module.exports = { getHome, getNav, getAbout }

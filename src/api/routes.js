@@ -13,9 +13,11 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/about', async (req, res, next) => {
-  const about = await getHome()
+  const about = await getHome();
+  const nav = await getNav();
   res.render('pages/about', {
-    about
+    about,
+    nav
   })
 })
 
