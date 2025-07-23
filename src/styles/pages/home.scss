@@ -1,4 +1,5 @@
 @use '../shared/titles.scss' as titles;
+@use '../base/variables.scss' as vars;
 
 main{
   display: flex;
@@ -29,7 +30,8 @@ main{
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
+  width: 100dvw;
+  height: 100dvh;
   overflow: visible;
   position: fixed;
   top: 0;
@@ -47,36 +49,57 @@ main{
     display: flex;
     flex-wrap: nowrap;
     align-self: center;
+    height: 100dvh;
     // align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100;
     gap: 1rem;
   
     .home__gallery__image__content {
       display: flex;
-      height: 45vh;
-      width: 55dvw;
+      height: calc(50dvh - 2rem);
+      width: 55%;
       border-radius: 20px;
       overflow: hidden;
       
       .home__gallery__image {
         object-fit: cover;
         object-position: center;
-        width: 100%;
         display: flex
       };
     };
     
-    .top__image {
-      width: 105dvw;
-      height: 105dvh;
-    };
+    // .top__image {
+      // width: 105dvw;
+      // height: 105dvh;
+    // };
 
     // .bottom__image {
     //   width: 70dvw;
     //   height: 65dvh;
     // };
+  };  
+};
+
+.home__footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  z-index: 2;
+  gap: 2rem;
+
+  .home__footer__title {
+    @include titles.title-100;
+    font-weight: 600;
+    color: vars.$color-white;
   };
 
+  .home__footer__copy {
+    width: 35dvw;
+    @include titles.copy-050;
+    color: vars.$color-white;
+    line-height: 1.5;
+  };
 };

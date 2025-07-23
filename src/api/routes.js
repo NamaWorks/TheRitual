@@ -1,12 +1,14 @@
 const router = require("express").Router()
 
-const { getHome } = require('./controllers')
+const { getHome, getNav } = require('./controllers')
 
 router.get('/', async (req, res, next) => {
-  const home = await getHome()
+  const home = await getHome();
+  const nav = await getNav();
   // console.log(home);
   res.render('pages/home', {
-    home
+    home,
+    nav
   })
 })
 

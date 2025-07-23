@@ -9,7 +9,6 @@ export default class Component {
   
   getComponentPositionView () {
     this.positionViewTop = this.element.getBoundingClientRect().top - window.pageYOffset + window.innerHeight;
-    console.log(this.positionViewTop);
   };
 
   createObserver () {

@@ -6,8 +6,8 @@ class App {
     this.deltaY = 0;
 
     this.selectImages();
-    this.animateImages();
     this.handleWheel();
+    this.addEventListeners();
   }
 
   handleWheel () {
@@ -25,12 +25,24 @@ class App {
     this.imageBottom.setBottom();
   };
 
+  addEventListeners () {
+    window.addEventListener('load', () => {
+      this.animateImages();
+    });
+
+    window.addEventListener('wheel', () => {
+      this.animateImages();
+    });
+  };
+
   animateImages () {
-    this.imageTop.animate(this.deltaY);
-    this.imageBottom.animate(this.deltaY);
+    if (this.imageBottom && this.imageTop) {
+      this.imageTop.animate(this.deltaY);
+      this.imageBottom.animate(this.deltaY);
+    };
   };
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  new App()
+  new App();
 });

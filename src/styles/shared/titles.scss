@@ -1,17 +1,26 @@
 @use '../base/fonts.scss' as fonts;
+@use '../base/variables.scss' as vars;
 
 @mixin pretitle-100{
   // font-family: "Dawning of a New Day", cursive;
   font-family: fonts.$font-secondary;
   font-size: 2rem;
   text-align: center;
-  color: #202020;
+  color: vars.$color-dark;
+};
+
+@mixin copy-050{
+  // font-family: "Encode Sans Semi Expanded", sans-serif;
+  font-family: fonts.$font-primary;
+  font-size: 1rem;
+  text-align: center;
+  color: vars.$color-dark;
 };
 
 @mixin title-100{
   // font-family: "Encode Sans Semi Expanded", sans-serif;
   font-family: fonts.$font-primary;
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: center;
-  color: #202020;
+  color: vars.$color-dark;
 };
