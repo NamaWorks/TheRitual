@@ -1,5 +1,5 @@
 export default class Component {
-  constructor ({ element }) {
+  constructor ({ element, elements = {} }) {
     this.element = element;
   }
 

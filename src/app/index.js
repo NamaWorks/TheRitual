@@ -8,56 +8,56 @@ class App {
     this.deltaY = 0;
 
     this.getTemplate();
-    this.updateTemplate();
-    this.handleWheel();
-    // this.selectImages();
+    this.observeTemplateChange();
+    this.content = document.querySelector('#content');
 
     const links = document.querySelectorAll('a')
     links.forEach(link => {
-      console.log(link)
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        getApiDataFront()
-    }) 
-    })
-  }
+        this.templateElement.setAttribute('data-template', link.getAttribute('href').replace('/', ''));
+    });
+    });
+  };
 
   getTemplate () {
       this.templateElement = document.querySelector('[data-template]');
       this.template = this.templateElement.getAttribute('data-template');
-      console.log(this.template);
-    };
-    
-  updateTemplate () {
-    this.templateElement = document.querySelector('[data-template]');
-    this.templateElement.addEventListener('change', () => {
-      this.template = this.templateElement.getAttribute('data-template');
-    })
   };
 
-  createPages () {
-    this.pages = {
-      home: new Home(),
-      about: new About(),
-    };
+  observeTemplateChange () {
+    const observer = new MutationObserver(() => {
+      this.getTemplate();
+    });
 
-    this.page = this.pages[this.template]
+    observer.observe(this.templateElement, { attributes: true, attributeFilter: ['data-template'] })
   };
 
-  handleWheel () {
-    window.addEventListener('wheel', (e) => {
-      this.deltaY = e.deltaY
-    })
-  };
+  async onChange (template) {
+    // await this.page.hide();
+
+  const request = await window.fetch("http://localhost:3000/about");
+  // const request = await window.fetch(url);
   
-  // selectImages () {
-  //   this.images = document.querySelectorAll('.home__gallery__image__content');
-  //   this.imageTop = new HomeImage({ element: this.images[2] });
-  //   this.imageBottom = new HomeImage({ element: this.images[6] });
+  if(request.status === 200){
+    const html = await request.text();
+    // now we can modify the inner html of our document with this one. maybe it would be better to print all the html inside a div in order to select whichever elements we want from them using querySelector and then adding them to our document => see Luis Bizarro project in order to know more (frontend index.js file).
 
-  //   this.imageTop.setTop();
-  //   this.imageBottom.setBottom();
-  // };
+    const div = document.createElement('div');
+
+    div.innerHTML = html;
+
+    const divContent = div.querySelector('.content');
+    this.template = divContent.getAttribute('data-template');
+    // we need to manage the template change here
+
+    this.templateElement.setAttribute(this.template);
+
+    this.content = divContent;
+  }
+  };
+
+  
 };
 
 document.addEventListener('DOMContentLoaded', () => {
