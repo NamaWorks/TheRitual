@@ -22,9 +22,4 @@ export default class Links extends Component{
 
     }
   };
-
-  async handleNavigation(url) {
-    history.pushState({}, '', url);
-    // const data = await getApiDataFront(url)
-  };
 };
