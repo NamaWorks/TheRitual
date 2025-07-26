@@ -23,9 +23,19 @@ export default class Navigation {
   };
 
   handleBrowserNavigation () {
-    window.addEventListener('popstate', (e) => {
-      // console.log(location.pathname);
-      window.location.reload() // not the most optimal solution but works for a while
+    window.addEventListener('popstate', async (e) => {
+      const contentToPrint = await (await fetch(`${window.location.href}`)).text();
+
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = contentToPrint;
+
+      let template = tempDiv.querySelector('[data-template]').getAttribute('data-template');
+      if (template === 'home') {
+        template = '/'
+      }
+      await this.loadContent(template);
+
+      // window.location.reload() // not the most optimal solution but works for a while
       // this.templateElement.setAttribute('data-template', location.pathname)
       // this.loadContent(template); // could we do it without loading the page? with some kind of cache or something // we could load the content as it loads when clicking on a link
     });
